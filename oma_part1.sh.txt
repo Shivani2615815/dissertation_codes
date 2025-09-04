@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --account=BISC033844
+#SBATCH --partition=compute
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=2GB
+#SBATCH --job-name=oma1
+#SBATCH --output=logs/oma1-%J.log
+#SBATCH --export=None
+#SBATCH --error=logs/oma1-%J.err
+
+module load gcc/14.1.0-dn2g
+module load openmpi/5.0.3-et6p
+module load hmmer/3.4-dlenn64
+module load blast-plus/2.14.1-kvze
+
+cd /user/home/fe24041/OMA/OMA.2.6.0
+./bin/oma -c
+

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#SBATCH --account=BISC033844
+#SBATCH --job-name=orto1
+#SBATCH --nodes=1
+#SBATCH --partition=compute
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=12
+#SBATCH --time=5-00:00:00
+#SBATCH --mem=80G
+
+# Code
+
+module load openmpi/5.0.3-et6p
+module load orthofinder/2.5.5-openblas-ynxm
+module load diamond/2.1.7-iral
+module load mafft/7.505-gnbu
+
+cd orthofinder
+
+orthofinder -f proteomes -t 12 -M msa -S diamond -A mafft
+Collapse
+

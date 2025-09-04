@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --account=BISC033844
+#SBATCH --partition=compute
+#SBATCH --time=10-00:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=5
+#SBATCH --cpus-per-task=12
+#SBATCH --mem=80GB
+#SBATCH --job-name=oma3
+#SBATCH --output=logs/oma3-%J.log
+#SBATCH --export=None
+#SBATCH --error=logs/oma3-%J.err
+cd /user/home/fe24041/OMA/OMA.2.6.0
+
+module load openmpi/5.0.3-et6p
+
+./bin/oma
